@@ -59,17 +59,27 @@ header {
 
 .add-task-btn {
     width: 100%;
-    padding: 10px;
-    background-color: #fff;
+    padding: 12px;
+    background-color: #ffffff;
     border: 2px dashed #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
+    color: #64748b;
+    font-weight: 600;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
 }
 
 .add-task-btn:hover {
-    background-color: #e2e8f0;
-    border-color: #94a3b8;
+    background-color: #f8fafc;
+    border-color: #3b82f6;
+    color: #3b82f6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
 }
 
 
@@ -154,4 +164,77 @@ header {
     border-radius: 20px;
     font-size: 0.9rem;
     margin-top: 10px;
+}
+
+#clear-done-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #fee2e2;
+    color: #ef4444;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#clear-done-btn:hover {
+    background-color: #ef4444;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
+}
+.filter-section {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+#priorityFilter {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    background-color: white;
+    font-family: inherit;
+    font-weight: 500;
+    color: #1e293b;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+#priorityFilter:hover {
+    border-color: #3b82f6;
+}
+
+#priorityFilter:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+#saveTaskBtn {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+#saveTaskBtn:hover {
+    opacity: 0.9;
+}
+
+#cancelModalBtn {
+    background-color: #f1f5f9;
+    color: #64748b;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
 }

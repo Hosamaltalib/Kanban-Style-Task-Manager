@@ -8,6 +8,8 @@ const taskPriorityInput = document.getElementById("taskPriorityInput");
 const taskDateInput = document.getElementById("taskDateInput");
 const saveTaskBtn = document.getElementById("saveTaskBtn");
 const cancelModalBtn = document.getElementById("cancelModalBtn");
+const priorityFilter = document.getElementById("priorityFilter");
+const clearDoneBtn = document.getElementById("clear-done-btn");
 
 function openModal(columnId) {
     currentColumn = columnId;
@@ -22,15 +24,6 @@ function closeModal() {
     taskPriorityInput.value = "low";
     taskDateInput.value = "";
 }
-
-document.querySelectorAll(".add-task-btn").forEach(button => {
-    button.addEventListener("click", () => {
-        const columnId = button.getAttribute("data-column");
-        openModal(columnId);
-    });
-});
-
-cancelModalBtn.addEventListener("click", closeModal);
 
 function saveTask() {
     const title = taskTitleInput.value.trim();
@@ -49,11 +42,11 @@ function saveTask() {
     };
 
     tasks.push(newTask);
-    renderBoard();
+    renderBoard(priorityFilter.value);
     closeModal();
 }
 
-function renderBoard() {
+function renderBoard(filter = "all") {
     const lists = {
         todo: document.getElementById("todo-list"),
         inprogress: document.getElementById("inprogress-list"),
@@ -62,7 +55,12 @@ function renderBoard() {
 
     Object.values(lists).forEach(list => list.innerHTML = "");
 
-    tasks.forEach(task => {
+    const filteredTasks = tasks.filter(task => {
+        if (filter === "all") return true;
+        return task.priority === filter;
+    });
+
+    filteredTasks.forEach(task => {
         const li = document.createElement("li");
         li.className = `task-card priority-${task.priority}`;
         li.innerHTML = `
@@ -76,4 +74,23 @@ function renderBoard() {
     document.getElementById("task-counter").textContent = `Total Tasks: ${tasks.length}`;
 }
 
+function clearDoneTasks() {
+    if (confirm("Are you sure you want to clear all completed tasks?")) {
+        tasks = tasks.filter(task => task.status !== "done");
+        renderBoard(priorityFilter.value);
+    }
+}
+
+document.querySelectorAll(".add-task-btn").forEach(button => {
+    button.addEventListener("click", () => {
+        const columnId = button.getAttribute("data-column");
+        openModal(columnId);
+    });
+});
+
 saveTaskBtn.addEventListener("click", saveTask);
+cancelModalBtn.addEventListener("click", closeModal);
+priorityFilter.addEventListener("change", () => renderBoard(priorityFilter.value));
+clearDoneBtn.addEventListener("click", clearDoneTasks);
+
+renderBoard();

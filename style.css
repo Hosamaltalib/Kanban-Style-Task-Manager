@@ -130,6 +130,7 @@ header {
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     border-left: 5px solid #ccc;
     cursor: grab;
+    user-select: none;
 }
 
 .task-card h4 {
@@ -150,6 +151,9 @@ header {
     color: #94a3b8;
 }
 
+.task-card:active {
+    cursor: grabbing;
+}
 
 .priority-high { border-left-color: #ef4444; }    
 .priority-medium { border-left-color: #f59e0b; }  
@@ -237,4 +241,9 @@ header {
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
+}
+
+.column:drag-over {
+    background-color: #e2e8f0;
+    border: 2px dashed #3b82f6;
 }

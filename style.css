@@ -110,3 +110,48 @@ header {
     gap: 10px;
     justify-content: flex-end;
 }
+
+
+.task-card {
+    background: white;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-left: 5px solid #ccc;
+    cursor: grab;
+}
+
+.task-card h4 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: #1e293b;
+}
+
+.task-card p {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.task-card small {
+    display: block;
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+
+.priority-high { border-left-color: #ef4444; }    
+.priority-medium { border-left-color: #f59e0b; }  
+.priority-low { border-left-color: #10b981; }    
+
+
+.badge {
+    background: #1e293b;
+    color: white;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
